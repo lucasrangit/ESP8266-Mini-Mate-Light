@@ -73,7 +73,7 @@ void setup() {
 
   if (udp.listen(UDP_PORT)) {
     udp.onPacket([](AsyncUDPPacket packet) {
-      // Serial.printf("Received %d bytes from %s, port %d\n", packet.length(), packet.remoteIP().toString().c_str(), packet.remotePort());
+      Serial.printf("Received %d bytes from %s, port %d\n", packet.length(), packet.remoteIP().toString().c_str(), packet.remotePort());
       // Serial.print("Data: ");
       // // Serial.write(packet.data(), packet.length());
       // for (int i = 0; i < packet.length(); ++i)
@@ -136,6 +136,7 @@ void loop() {
   digitalWrite(LED_BUILTIN, led_state);
   delay(500);
   led_state = led_state == LOW ? HIGH : LOW;
-
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
   show_test_pattern();
 }
